@@ -1,5 +1,5 @@
-export const LOGIN_AUTHED_USER = 'LOGIN_AUTHED_USER'
-export const LOGOUT_AUTHED_USER = 'LOGOUT_AUTHED_USER'
+const LOGIN_AUTHED_USER = 'LOGIN_AUTHED_USER'
+const LOGOUT_AUTHED_USER = 'LOGOUT_AUTHED_USER'
 
 const loginAuthedUser = (id) => {
   return {
@@ -31,4 +31,4 @@ const handleLogoutAuthedUser = () => {
   }
 }
 
-export { loginAuthedUser, logoutAuthedUser, handleLoginAuthedUser, handleLogoutAuthedUser }
+export { LOGIN_AUTHED_USER, LOGOUT_AUTHED_USER, loginAuthedUser, logoutAuthedUser, handleLoginAuthedUser, handleLogoutAuthedUser }
