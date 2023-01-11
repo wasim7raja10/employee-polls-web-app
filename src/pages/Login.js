@@ -5,7 +5,6 @@ import { handleLoginAuthedUser } from "../actions/authedUser";
 const Login = ({ dispatch, loggedIn }) => {
 
   if (loggedIn) {
-    console.log("logged in");
     const urlParams = new URLSearchParams(window.location.search);
     const redirectUrl = urlParams.get('redirectTo');
     return <Navigate to={redirectUrl ? redirectUrl : "/"} />;
@@ -39,7 +38,6 @@ const Login = ({ dispatch, loggedIn }) => {
 }
 
 const mapStateToProps = ({ authUser }) => {
-  console.log("authedUser", authUser);
   return {
     loggedIn: !!authUser,
   };
