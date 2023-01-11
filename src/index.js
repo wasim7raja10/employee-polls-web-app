@@ -6,9 +6,9 @@ import { Provider } from 'react-redux';
 
 import App from './App';
 import './index.css';
-import reducers from "./reducers";
+import reducer from "./reducers/index";
 
-const store = configureStore(reducers)
+const store = configureStore({reducer})
 
 const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
