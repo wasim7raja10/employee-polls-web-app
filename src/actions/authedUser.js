@@ -1,10 +1,10 @@
 const LOGIN_AUTHED_USER = 'LOGIN_AUTHED_USER'
 const LOGOUT_AUTHED_USER = 'LOGOUT_AUTHED_USER'
 
-const loginAuthedUser = (id) => {
+const loginAuthedUser = (authedUser) => {
   return {
     type: LOGIN_AUTHED_USER,
-    id,
+    authedUser,
   }
 }
 
@@ -17,10 +17,9 @@ const logoutAuthedUser = () => {
 const handleLoginAuthedUser = (credentials) => {
   return (dispatch, getState) => {
     const { users } = getState()
-    const user = Object.values(users).find((user) => user.id === credentials.username &&
-      user.password === credentials.password)
-    if (user) {
-      dispatch(loginAuthedUser(user.id))
+    const user = Object.values(users).find(user => user.id === credentials.username)
+    if (!!user) {
+      return dispatch(loginAuthedUser(user))
     }
   }
 }
