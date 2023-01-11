@@ -4,7 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import { receiveInitialData } from "./actions/initialData";
 import PrivateWrapper from "./components/wrapper/PrivateWrapper";
 import Home from "./pages/Home";
+import Leaderboard from "./pages/Leaderboard";
 import Login from "./pages/Login";
+import Poll from "./pages/Poll";
 
 const App = ({dispatch, loggedIn}) => {
   useEffect(() => {
@@ -16,6 +18,8 @@ const App = ({dispatch, loggedIn}) => {
         <Route path="/login" element={<Login />} />
         <Route element={<PrivateWrapper />}>
           <Route path="/" element={<Home />} />
+          <Route path="/leaderboard" element={<Leaderboard/>} />
+          <Route path="/poll/:id" element={<Poll/>} />
         </Route>
       </Routes>
     </div>
