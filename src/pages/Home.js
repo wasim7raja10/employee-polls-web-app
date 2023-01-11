@@ -18,7 +18,7 @@ const Home = ({ authUser, polls, users }) => {
             <div key={poll.id}>
               <h3>{poll.question}</h3>
               <p>Created by: {users[poll.author].name}</p>
-              <Link to={`/questions/${poll.id}`}>View Poll</Link>
+              <Link to={`/poll/${poll.id}`}>View Poll</Link>
             </div>
           );
         })}
@@ -30,7 +30,7 @@ const Home = ({ authUser, polls, users }) => {
             <div key={poll.id}>
               <h3>{poll.question}</h3>
               <p>Created by: {users[poll.author].name}</p>
-              <Link to={`/questions/${poll.id}`}>View Poll</Link>
+              <Link to={`/poll/${poll.id}`}>View Poll</Link>
             </div>
           );
         })}
