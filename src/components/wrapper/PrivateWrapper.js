@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
-const PrivateWrapper = ({ user }) => {
-  return <>{user ? <Outlet /> : <Navigate to="/login" />}</>;
+const PrivateWrapper = ({ loggedIn }) => {
+  return <>{loggedIn ? <Outlet /> : <Navigate to="/login" />}</>;
 };
 
-const mapStateToProps = ({ authedUser }) => ({
-  loggedIn: !!authedUser,
+const mapStateToProps = ({ authUser }) => ({
+  loggedIn: !!authUser,
 });
 
 export default connect(mapStateToProps)(PrivateWrapper);

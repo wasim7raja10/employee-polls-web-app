@@ -3,12 +3,6 @@ import { Navigate } from "react-router-dom";
 import { handleLoginAuthedUser } from "../actions/authedUser";
 
 const Login = ({ dispatch, loggedIn }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const username = e.target.username.value;
-    const password = e.target.password.value;
-    dispatch(handleLoginAuthedUser({ username, password }));
-  };
 
   if (loggedIn) {
     console.log("logged in");
@@ -16,6 +10,13 @@ const Login = ({ dispatch, loggedIn }) => {
     const redirectUrl = urlParams.get('redirectTo');
     return <Navigate to={redirectUrl ? redirectUrl : "/"} />;
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const username = e.target.username.value;
+    const password = e.target.password.value;
+    dispatch(handleLoginAuthedUser({ username, password }));
+  };
 
   return (
     <div className=" flex justify-center flex-col items-center gap-6">
@@ -37,8 +38,11 @@ const Login = ({ dispatch, loggedIn }) => {
   );
 }
 
-const mapStateToProps = ({ authedUser }) => ({
-  loggedIn: !!authedUser,
-});
+const mapStateToProps = ({ authUser }) => {
+  console.log("authedUser", authUser);
+  return {
+    loggedIn: !!authUser,
+  };
+}
 
 export default connect(mapStateToProps)(Login);

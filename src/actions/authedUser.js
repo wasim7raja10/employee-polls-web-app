@@ -14,10 +14,10 @@ const logoutAuthedUser = () => {
   }
 }
 
-const handleLoginAuthedUser = (credentials) => {
+const handleLoginAuthedUser = (credential) => {
   return (dispatch, getState) => {
     const { users } = getState()
-    const user = Object.values(users).find(user => user.id === credentials.username)
+    const user = Object.values(users).find(user => user.id === credential.username && user.password === credential.password)
     if (!!user) {
       return dispatch(loginAuthedUser(user))
     }

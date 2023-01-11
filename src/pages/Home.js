@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Home = ({ authedUser, polls, users }) => {
+const Home = ({ authUser, polls, users }) => {
   const answeredPolls = polls.filter(poll => {
-    return poll.optionOne.votes.includes(authedUser) || poll.optionTwo.votes.includes(authedUser);
+    return poll.optionOne.votes.includes(authUser.id) || poll.optionTwo.votes.includes(authUser.id);
   });
   const unansweredPolls = polls.filter(poll => {
-    return !poll.optionOne.votes.includes(authedUser) && !poll.optionTwo.votes.includes(authedUser);
+    return !poll.optionOne.votes.includes(authUser.id) && !poll.optionTwo.votes.includes(authUser.id);
   });
   return (
     <div>
@@ -39,8 +39,8 @@ const Home = ({ authedUser, polls, users }) => {
   );
 };
 
-const mapStateToProps = ({authedUser, questions, users}) => ({
-  authedUser,
+const mapStateToProps = ({authUser, questions, users}) => ({
+  authUser,
   polls: Object.values(questions).sort(
       (a, b) => b.timestamp - a.timestamp
   ),
