@@ -20,7 +20,7 @@ const Home = ({ authUser, polls, users }) => {
         })}
       </div>
       <h2 className=" text-blue-400 text-2xl underline my-8 text-center">Answered Polls</h2>
-      <div className=" flex ">
+      <div className=" flex gap-6 flex-wrap">
         {answeredPolls.map(poll => {
           return (
             <PollCard key={poll.id} poll={poll} author={users[poll.author]} />
