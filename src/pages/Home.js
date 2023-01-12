@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import PollCard from "../components/home/PollCard";
 
 const Home = ({ authUser, polls, users }) => {
   const answeredPolls = polls.filter(poll => {
@@ -11,27 +11,19 @@ const Home = ({ authUser, polls, users }) => {
   return (
     <div>
       <h1 className=" text-4xl text-center">Dashboard</h1>
-      <h2 className=" text-blue-400 text-2xl">Unanswered Polls</h2>
-      <div>
+      <h2 className=" text-blue-400 text-2xl underline my-8 text-center">Unanswered Polls</h2>
+      <div className=" flex gap-6 flex-wrap">
         {unansweredPolls.map(poll => {
           return (
-            <div key={poll.id}>
-              <h3>{poll.question}</h3>
-              <p>Created by: {users[poll.author].name}</p>
-              <Link to={`/poll/${poll.id}`}>View Poll</Link>
-            </div>
+            <PollCard key={poll.id} poll={poll} author={users[poll.author]} />
           );
         })}
       </div>
-      <h2 className=" text-blue-400 text-2xl">Answered Polls</h2>
-      <div>
+      <h2 className=" text-blue-400 text-2xl underline my-8 text-center">Answered Polls</h2>
+      <div className=" flex ">
         {answeredPolls.map(poll => {
           return (
-            <div key={poll.id}>
-              <h3>{poll.question}</h3>
-              <p>Created by: {users[poll.author].name}</p>
-              <Link to={`/poll/${poll.id}`}>View Poll</Link>
-            </div>
+            <PollCard key={poll.id} poll={poll} author={users[poll.author]} />
           );
         })}
       </div>

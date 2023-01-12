@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateWrapper = ({ loggedIn }) => {
-  return <>{loggedIn ? <Outlet /> : <Navigate to="/login" />}</>;
+  return <div className=" md:mx-10 mx-4">{loggedIn ? <Outlet /> : <Navigate to="/login" />}</div>;
 };
 
 const mapStateToProps = ({ authUser }) => ({
