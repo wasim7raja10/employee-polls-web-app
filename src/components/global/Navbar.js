@@ -7,9 +7,6 @@ const Navbar = ({ dispatch, authUser }) => {
     dispatch(handleLogoutAuthedUser())
     return <Navigate to="/login" />
   }
-
-  console.log(authUser);
-
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
