@@ -29,11 +29,19 @@ const receiveQuestions = (questions) => {
 }
 
 const handleAddQuestion = (firstOption, secondOption) => {
-  return async (dispatch, getState) => {
-    const { authedUser } = getState();
-    const question = await saveQuestion(firstOption, secondOption, authedUser);
-    dispatch(addQuestion(question));
-    dispatch(addUserQuestion(question));
+  return (dispatch, getState) => {
+    const { authUser } = getState();
+    const question = {
+      optionOneText: firstOption,
+      optionTwoText: secondOption,
+      author: authUser,
+    };
+    return saveQuestion(question)
+      .then((question) => {
+        console.log(question);
+        dispatch(addQuestion(question));
+        dispatch(addUserQuestion(question))
+      })
   };
 }
 

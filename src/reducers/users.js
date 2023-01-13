@@ -8,20 +8,21 @@ const users = (state = {}, action) => {
         ...action.users,
       };
     case ADD_USER_QUESTION:
+      console.log(action);
       return {
         ...state,
         [action.author]: {
           ...state[action.author],
-          questions: state[action.author].questions.concat([action.id]),
+          questions: [...state[action.author].questions, action.id]
         },
       };
     case ADD_USER_ANSWER:
       return {
         ...state,
-        [action.authedUser]: {
-          ...state[action.authedUser],
+        [action.authUser]: {
+          ...state[action.authUser],
           answers: {
-            ...state[action.authedUser].answers,
+            ...state[action.authUser].answers,
             [action.qid]: action.answer,
           },
         },

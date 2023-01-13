@@ -19,7 +19,7 @@ const questions = (state = {}, action) => {
           ...state[action.qid],
           [action.answer]: {
             ...state[action.qid][action.answer],
-            votes: state[action.qid][action.answer].votes.concat([action.author]),
+            votes: state[action.qid][action.answer].votes.concat(action.authUser),
           },
         }
       };
