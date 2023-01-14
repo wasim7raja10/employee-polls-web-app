@@ -1,42 +1,50 @@
-import {render} from "@testing-library/react";
-import {Provider} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
+import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import React from "react";
 import Navbar from "./Navbar";
-import {setAuthedUser} from "../actions/authedUser";
 import { configureStore } from "@reduxjs/toolkit";
-import reducer from "../reducers";
+import reducer from "../../reducers";
+import { loginAuthedUser } from "../../actions/authedUser";
 
-const store = configureStore({reducer})
+const store = configureStore({ reducer })
 
 describe("Navbar", () => {
-    it("should render the component", () => {
-        store.dispatch(setAuthedUser({id: "sarahedo", password: ""}));
+  it("should render the component", () => {
+    store.dispatch(loginAuthedUser({
+      username: "tylermcginnis", password: ""
+    }))
+    const view = render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Navbar />
+        </BrowserRouter>
+      </Provider>
+    );
+    expect(view).toBeDefined();
+    expect(view).toMatchSnapshot();
+  });
 
-        const view = render(
-            <Provider store={store}>
-                <BrowserRouter>
-                    <Navbar/>
-                </BrowserRouter>
-            </Provider>
-        );
-        expect(view).toBeDefined();
-        expect(view).toMatchSnapshot();
-    });
+  it("should display all elements", () => {
+    store.dispatch(loginAuthedUser({
+      username: "tylermcginnis", password: ""
+    }))
+    const view = render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Navbar />
+        </BrowserRouter>
+      </Provider>
+    );
 
-    it("should display username of logged in user", () => {
-        store.dispatch(setAuthedUser({id: "sarahedo", password: ""}));
+    const homeLinkElement = view.getByTestId("home-link");
+    const newPollLinkElement = view.getByTestId("new-poll-link");
+    const leaderboardLinkElement = view.getByTestId("leaderboard-link");
+    const logoutLinkElement = view.getByTestId("logout-link");
 
-        const view = render(
-            <Provider store={store}>
-                <BrowserRouter>
-                    <Navbar />
-                </BrowserRouter>
-            </Provider>
-        );
-
-        const userSpanElement = view.getByTestId("authUserName");
-        expect(userSpanElement.textContent).toBe("Tyler McGinnis");
-
-    });
+    expect(homeLinkElement.textContent).toBe("Home");
+    expect(newPollLinkElement.textContent).toBe("New Poll");
+    expect(leaderboardLinkElement.textContent).toBe("Leaderboard");
+    expect(logoutLinkElement.textContent).toBe("Logout");
+  });
 });

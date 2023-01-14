@@ -16,10 +16,10 @@ const Navbar = ({ dispatch, authUser }) => {
       </div>
       <div className="flex-none">
         <ul data-testid="navbuttons" className="menu menu-horizontal px-1">
-          <li><Link to={"/"}>Home</Link></li>
-          <li><Link to={"/add"}>New Poll</Link></li>
-          <li><Link to={"/leaderboard"}>Leaderboard</Link></li>
-          <li><button onClick={logoutHandle}>Logout</button></li>
+          <li><Link data-testid="home-link" to={"/"}>Home</Link></li>
+          <li><Link data-testid="new-poll-link" to={"/add"}>New Poll</Link></li>
+          <li><Link data-testid="leaderboard-link" to={"/leaderboard"}>Leaderboard</Link></li>
+          <li><button data-testid="logout-link" onClick={logoutHandle}>Logout</button></li>
         </ul>
       </div>
     </div>
