@@ -11,7 +11,7 @@ const PollCard = ({ poll, author }) => {
       <div className="pr-4 pt-2">
         <h2 className="">{author?.name}</h2>
         <p className=" py-2">date : {date}</p>
-        <Link to={`/poll/${poll.id}`} className=" p-2 bg-blue-500 text-white mt-2 rounded-md">Details</Link>
+        <Link to={`/questions/${poll.id}`} className=" p-2 bg-blue-500 text-white mt-2 rounded-md">Details</Link>
       </div>
     </div>
   )
