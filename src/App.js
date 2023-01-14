@@ -24,7 +24,7 @@ const App = ({ dispatch, loggedIn }) => {
           <Route path="/" element={<Home />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/questions/:id" element={<Poll />} />
-          <Route path="/new" element={<NewPoll />} />
+          <Route path="/add" element={<NewPoll />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>
