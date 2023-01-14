@@ -8,6 +8,7 @@ const Login = ({ dispatch, loggedIn }) => {
     username: "tylermcginnis",
     password: "abc321",
   });
+  const [error, setError] = useState("");
   if (loggedIn) {
     const urlParams = new URLSearchParams(window.location.search);
     const redirectUrl = urlParams.get('redirectTo');
@@ -16,8 +17,11 @@ const Login = ({ dispatch, loggedIn }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(handleLoginAuthedUser(credentials));
-  }; 
+    const res = dispatch(handleLoginAuthedUser(credentials));
+    if (!res) {
+      setError("Invalid username or password");
+    }
+  };
 
   const handleLogin = (username, password) => {
     dispatch(handleLoginAuthedUser({ username, password }));
@@ -33,13 +37,13 @@ const Login = ({ dispatch, loggedIn }) => {
             handleLogin("sarahedo", "password123")
           }}><span>Sarah Edo</span></li>
           <li onClick={() => {
-           handleLogin("tylermcginnis", "abc321")
+            handleLogin("tylermcginnis", "abc321")
           }}><span>Tyler McGinnis</span></li>
           <li onClick={() => {
             handleLogin("mtsamis", "xyz123")
           }}><span>Mike Tsamis</span></li>
           <li onClick={() => {
-           handleLogin("zoshikanlu", "pass246")
+            handleLogin("zoshikanlu", "pass246")
           }}><span>Zenobia Oshikanlu</span></li>
         </ul>
       </div>
@@ -66,6 +70,12 @@ const Login = ({ dispatch, loggedIn }) => {
         </div>
         <button data-testid="submit-login" className="btn">Login</button>
       </form>
+      {error && <div className="alert alert-error shadow-lg max-w-xs">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span data-testid="error-message">Username or password is incorrect</span>
+        </div>
+      </div>}
     </div>
   );
 }

@@ -21,6 +21,8 @@ const handleLoginAuthedUser = (credential) => {
     if (!!user) {
       console.log('user', user);
       return dispatch(loginAuthedUser(user))
+    } else {
+      return false
     }
   }
 }

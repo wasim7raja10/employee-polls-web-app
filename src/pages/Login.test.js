@@ -47,4 +47,25 @@ describe("Login", () => {
     expect(usernameInputElement.value).toBe("user");
     expect(passwordInputElement.value).toBe("password");
   });
+
+  test("should display error message when username or password is not correct", () => {
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Login />
+        </BrowserRouter>
+      </Provider>
+    );
+
+    const usernameInputElement = screen.getByTestId("username-input");
+    const passwordInputElement = screen.getByTestId("password-input");
+    const submitButtonElement = screen.getByTestId("submit-login");
+
+    fireEvent.change(usernameInputElement, { target: { value: "user" } });
+    fireEvent.change(passwordInputElement, { target: { value: "password" } });
+    fireEvent.click(submitButtonElement);
+
+    const errorMessageElement = screen.getByTestId("error-message");
+    expect(errorMessageElement.textContent).toBe("Username or password is incorrect");
+  });
 });
