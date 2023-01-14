@@ -1,4 +1,4 @@
-import {fireEvent, render} from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import React from "react";
@@ -9,7 +9,7 @@ import reducer from "../reducers";
 const store = configureStore({reducer})
 
 describe("NewPoll", () => {
-    it("should render the component", () => {
+    test("should render the component", () => {
         const view = render(
             <Provider store={store}>
                 <BrowserRouter>
@@ -21,8 +21,8 @@ describe("NewPoll", () => {
         expect(view).toMatchSnapshot();
     });
 
-    it("should display all elements", () => {
-        const view = render(
+    test("should display all elements", () => {
+        render(
             <Provider store={store}>
                 <BrowserRouter>
                     <NewPoll/>
@@ -30,11 +30,11 @@ describe("NewPoll", () => {
             </Provider>
         );
 
-        const firstOptionLabelElement = view.getByTestId("firstOptionLabel");
-        const firstOptionInputElement = view.getByTestId("firstOption");
-        const secondOptionLabelElement = view.getByTestId("secondOptionLabel");
-        const secondOptionInputElement = view.getByTestId("secondOption");
-        const submitButtonElement = view.getByTestId("submit-poll");
+        const firstOptionLabelElement = screen.getByTestId("firstOptionLabel");
+        const firstOptionInputElement = screen.getByTestId("firstOption");
+        const secondOptionLabelElement = screen.getByTestId("secondOptionLabel");
+        const secondOptionInputElement = screen.getByTestId("secondOption");
+        const submitButtonElement = screen.getByTestId("submit-poll");
 
         expect(firstOptionLabelElement.textContent).toBe("First Option");
         expect(secondOptionLabelElement.textContent).toBe("Second Option");
