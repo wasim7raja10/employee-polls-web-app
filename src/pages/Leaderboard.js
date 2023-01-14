@@ -55,7 +55,6 @@ const Leaderboard = ({ users }) => {
 }
 
 const mapStateToProps = ({ users }) => {
-
   return {
     users,
   };
