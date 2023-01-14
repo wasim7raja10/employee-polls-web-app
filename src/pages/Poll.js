@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { handleAddAnswer } from "../actions/polls";
 
 const Poll = ({ authUser, users, questions, dispatch }) => {
-  const navigate = useNavigate();
   // get the poll id from the url
   const { id } = useParams();
   const authorName = users[questions[id].author].name;
@@ -28,7 +27,6 @@ const Poll = ({ authUser, users, questions, dispatch }) => {
               dispatch(handleAddAnswer(id, "optionOne"))
               setAnswer("optionOne");
               setVoteCount((prev) => ({ ...prev, optionOne: prev.optionOne + 1 }));
-              navigate("/");
             }}
             className={`btn btn-lg btn-outline flex  flex-col gap-4 ${answer === 'optionOne' && "bg-green-400"}`}
           >
@@ -44,7 +42,6 @@ const Poll = ({ authUser, users, questions, dispatch }) => {
               dispatch(handleAddAnswer(id, "optionTwo"))
               setAnswer("optionTwo");
               setVoteCount((prev) => ({ ...prev, optionTwo: prev.optionTwo + 1 }));
-              navigate("/");
             }}
             className={`btn btn-lg btn-outline flex  flex-col gap-4 ${answer === 'optionTwo' && "bg-green-400"}`}
           >
