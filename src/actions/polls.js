@@ -12,10 +12,10 @@ const addQuestion = (question) => {
   };
 }
 
-const addAnswerQuestion = (author, qid, answer) => {
+const addAnswerQuestion = (authUser, qid, answer) => {
   return {
     type: ADD_ANSWER_QUESTION,
-    author,
+    authUser,
     qid,
     answer,
   };

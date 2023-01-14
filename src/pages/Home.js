@@ -35,7 +35,6 @@ const mapStateToProps = ({ authUser, questions, users }) => {
   }).sort((a, b) => b.timestamp - a.timestamp);
   console.log(answeredPolls, unansweredPolls);
   return ({
-    authUser,
     answeredPolls,
     unansweredPolls,
     users,

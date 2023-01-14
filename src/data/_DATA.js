@@ -212,6 +212,9 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
           }
         }
       }
+      
+      console.log("users", users);
+
 
       resolve(true)
     }, 500)

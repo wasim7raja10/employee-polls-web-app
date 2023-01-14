@@ -13,6 +13,7 @@ const questions = (state = {}, action) => {
         [action.question.id]: action.question,
       };
     case ADD_ANSWER_QUESTION:
+      console.log(action);
       return {
         ...state,
         [action.qid]: {
