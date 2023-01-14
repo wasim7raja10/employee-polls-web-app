@@ -2,14 +2,14 @@ import {render} from "@testing-library/react";
 import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import React from "react";
-import Navbar from "./Nav";
+import Navbar from "./Navbar";
 import {setAuthedUser} from "../actions/authedUser";
 import { configureStore } from "@reduxjs/toolkit";
 import reducer from "../reducers";
 
 const store = configureStore({reducer})
 
-describe("Nav", () => {
+describe("Navbar", () => {
     it("should render the component", () => {
         store.dispatch(setAuthedUser({id: "sarahedo", password: ""}));
 
@@ -30,7 +30,7 @@ describe("Nav", () => {
         const view = render(
             <Provider store={store}>
                 <BrowserRouter>
-                    <Nav/>
+                    <Navbar />
                 </BrowserRouter>
             </Provider>
         );
