@@ -27,7 +27,7 @@ const Login = ({ dispatch, loggedIn }) => {
     <div className=" flex justify-center flex-col items-center gap-6">
       <h1 className=" text-blue-400 text-4xl p-8 text-center">Login</h1>
       <div className="dropdown">
-        <label tabIndex="0" className="btn m-1">Existing User</label>
+        <label data-testid="existing-user-label" tabIndex="0" className="btn m-1">Existing User</label>
         <ul tabIndex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
           <li onClick={() => {
             handleLogin("sarahedo", "password123")
@@ -46,8 +46,8 @@ const Login = ({ dispatch, loggedIn }) => {
       {/* Login Form with username and password */}
       <form onSubmit={handleSubmit} className=" form-control w-full max-w-xs space-y-6">
         <div className=" space-y-2">
-          <label htmlFor="username">Username</label>
-          <input onChange={
+          <label data-testid="username-label" htmlFor="username">Username</label>
+          <input data-testid="username-input" onChange={
             (e) => setCredentials({
               ...credentials,
               username: e.target.value
@@ -56,15 +56,15 @@ const Login = ({ dispatch, loggedIn }) => {
         </div>
 
         <div className=" space-y-2">
-          <label htmlFor="password">Password</label>
-          <input onChange={
+          <label data-testid="password-label" htmlFor="password">Password</label>
+          <input data-testid="password-input" onChange={
             (e) => setCredentials({
               ...credentials,
               password: e.target.value
             })
           } value={credentials.password} className="input input-bordered w-full max-w-xs" type="password" id="password" name="password" />
         </div>
-        <button className="btn">Login</button>
+        <button data-testid="submit-login" className="btn">Login</button>
       </form>
     </div>
   );
