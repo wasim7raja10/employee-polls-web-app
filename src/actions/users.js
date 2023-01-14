@@ -10,7 +10,7 @@ const addUserQuestion = ({ author, id }) => {
   };
 }
 
-const addUserAnswer = ({ authUser, qid, answer }) => {
+const addUserAnswer = ( authUser, qid, answer ) => {
   return {
     type: ADD_USER_ANSWER,
     authUser,

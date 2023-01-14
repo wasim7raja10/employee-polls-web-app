@@ -17,6 +17,7 @@ const users = (state = {}, action) => {
         },
       };
     case ADD_USER_ANSWER:
+      console.log(action);
       return {
         ...state,
         [action.authUser]: {

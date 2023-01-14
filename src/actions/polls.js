@@ -29,28 +29,33 @@ const receiveQuestions = (questions) => {
 }
 
 const handleAddQuestion = (firstOption, secondOption) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const { authUser } = getState();
     const question = {
       optionOneText: firstOption,
       optionTwoText: secondOption,
       author: authUser,
     };
-    return saveQuestion(question)
-      .then((question) => {
-        console.log(question);
-        dispatch(addQuestion(question));
-        dispatch(addUserQuestion(question))
-      })
+    const questionResponse = await saveQuestion(question);
+    console.log(questionResponse);
+    dispatch(addQuestion(questionResponse));
+    dispatch(addUserQuestion(questionResponse));
   };
 }
 
 const handleAddAnswer = (questionId, answer) => {
   return async (dispatch, getState) => {
-    const { authedUser } = getState();
-    await saveQuestionAnswer(authedUser.id, questionId, answer);
-    dispatch(addAnswerQuestion(authedUser.id, questionId, answer));
-    dispatch(addUserAnswer(authedUser.id, questionId, answer));
+    const { authUser } = getState();
+    const answerObject = {
+      authedUser: authUser.id,
+      qid: questionId,
+      answer,
+    };
+    const isAdded = await saveQuestionAnswer(answerObject);
+    if(isAdded) {
+      dispatch(addAnswerQuestion(authUser.id, questionId, answer));
+      dispatch(addUserAnswer(authUser.id, questionId, answer));
+    }
   };
 }
 
