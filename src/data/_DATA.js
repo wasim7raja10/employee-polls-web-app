@@ -172,7 +172,6 @@ export function _saveQuestion(question) {
         ...questions,
         [formattedQuestion.id]: formattedQuestion
       }
-      console.log("question", question);
       users = {
         ...users,
         [question.author.id]: {
@@ -180,16 +179,12 @@ export function _saveQuestion(question) {
           questions: [...users[question.author.id].questions, formattedQuestion.id]
         }
       };
-      console.log("users", users);
       resolve(formattedQuestion)
     }, 1000)
   })
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {
-  console.log("authedUser", authedUser);
-  console.log("qid", qid);
-  console.log("answer", answer)
   return new Promise((resolve, reject) => {
     if (!authedUser || !qid || !answer) {
       reject("Please provide authedUser, qid, and answer");
@@ -217,9 +212,6 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
           }
         }
       }
-
-      console.log("users", users);
-      
 
       resolve(true)
     }, 500)

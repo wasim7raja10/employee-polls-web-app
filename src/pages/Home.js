@@ -1,13 +1,8 @@
 import { connect } from "react-redux";
 import PollCard from "../components/home/PollCard";
 
-const Home = ({ authUser, polls, users }) => {
-  const answeredPolls = polls.filter(poll => {
-    return poll.optionOne.votes.includes(authUser.id) || poll.optionTwo.votes.includes(authUser.id);
-  });
-  const unansweredPolls = polls.filter(poll => {
-    return !poll.optionOne.votes.includes(authUser.id) && !poll.optionTwo.votes.includes(authUser.id);
-  });
+const Home = ({ answeredPolls, unansweredPolls, users }) => {
+  
   return (
     <div>
       <h1 className=" text-4xl text-center">Dashboard</h1>
@@ -31,12 +26,20 @@ const Home = ({ authUser, polls, users }) => {
   );
 };
 
-const mapStateToProps = ({authUser, questions, users}) => ({
-  authUser,
-  polls: Object.values(questions).sort(
-      (a, b) => b.timestamp - a.timestamp
-  ),
-  users,
-});
+const mapStateToProps = ({ authUser, questions, users }) => {
+  const answeredPolls = Object.values(questions).filter(poll => {
+    return poll.optionOne.votes.includes(authUser.id) || poll.optionTwo.votes.includes(authUser.id);
+  }).sort((a, b) => b.timestamp - a.timestamp);
+  const unansweredPolls = Object.values(questions).filter(poll => {
+    return !poll.optionOne.votes.includes(authUser.id) && !poll.optionTwo.votes.includes(authUser.id);
+  }).sort((a, b) => b.timestamp - a.timestamp);
+  console.log(answeredPolls, unansweredPolls);
+  return ({
+    authUser,
+    answeredPolls,
+    unansweredPolls,
+    users,
+  })
+};
 
 export default connect(mapStateToProps)(Home);

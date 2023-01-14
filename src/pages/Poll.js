@@ -13,7 +13,6 @@ const Poll = ({ authUser, users, questions, dispatch }) => {
     optionOne: questions[id].optionOne.votes.length,
     optionTwo: questions[id].optionTwo.votes.length,
   };
-  console.log("initialVoteCount", initialVoteCount);
   const [voteCount, setVoteCount] = useState(initialVoteCount);
   return (
     <div>
@@ -28,6 +27,7 @@ const Poll = ({ authUser, users, questions, dispatch }) => {
               dispatch(handleAddAnswer(id, "optionOne"))
               setAnswer("optionOne");
               setVoteCount((prev) => ({ ...prev, optionOne: prev.optionOne + 1 }));
+
             }}
             className={`btn btn-lg btn-outline flex  flex-col gap-4 ${answer === 'optionOne' && "bg-green-400"}`}
           >

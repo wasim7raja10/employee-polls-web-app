@@ -8,7 +8,6 @@ const users = (state = {}, action) => {
         ...action.users,
       };
     case ADD_USER_QUESTION:
-      console.log(action);
       return {
         ...state,
         [action.author]: {
@@ -17,7 +16,6 @@ const users = (state = {}, action) => {
         },
       };
     case ADD_USER_ANSWER:
-      console.log(action);
       return {
         ...state,
         [action.authUser]: {

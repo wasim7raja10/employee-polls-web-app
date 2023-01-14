@@ -37,7 +37,6 @@ const handleAddQuestion = (firstOption, secondOption) => {
       author: authUser,
     };
     const questionResponse = await saveQuestion(question);
-    console.log(questionResponse);
     dispatch(addQuestion(questionResponse));
     dispatch(addUserQuestion(questionResponse));
   };
