@@ -19,7 +19,7 @@ const NewPoll = ({ dispatch }) => {
       <h1 className=" text-4xl text-center">New Poll</h1>
       <form onSubmit={handleSubmit} className="">
         <div className=" flex flex-col">
-          <label className=" text-xl py-4" htmlFor="firstOption">First Option</label>
+          <label data-testid="firstOptionLabel" className=" text-xl py-4" htmlFor="firstOption">First Option</label>
           <input
             value={options.firstOption}
             onChange={(e) => setOptions({ ...options, firstOption: e.target.value })}
@@ -32,7 +32,7 @@ const NewPoll = ({ dispatch }) => {
         </div>
 
         <div className=" flex flex-col">
-          <label className=" text-xl py-4" htmlFor="firstOption">Second Option</label>
+          <label data-testid="secondOptionLabel" className=" text-xl py-4" htmlFor="firstOption">Second Option</label>
           <input
             value={options.secondOption}
             onChange={(e) => setOptions({ ...options, secondOption: e.target.value })}
