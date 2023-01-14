@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { receiveInitialData } from "./actions/initialData";
 import Navbar from "./components/global/Navbar";
+import ErrorWrapper from "./components/wrapper/ErrorWrapper";
 import PrivateWrapper from "./components/wrapper/PrivateWrapper";
 import Error404 from "./pages/Error404";
 import Home from "./pages/Home";
@@ -23,8 +24,10 @@ const App = ({ dispatch, loggedIn }) => {
         <Route element={<PrivateWrapper />}>
           <Route path="/" element={<Home />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/questions/:id" element={<Poll />} />
           <Route path="/add" element={<NewPoll />} />
+        </Route>
+        <Route element={<ErrorWrapper />}>
+          <Route path="/questions/:id" element={<Poll />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>

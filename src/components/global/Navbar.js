@@ -6,7 +6,7 @@ const Navbar = ({ dispatch, authUser }) => {
   const navigate = useNavigate()
   const logoutHandle = () => {
     dispatch(handleLogoutAuthedUser())
-    navigate("/")
+    navigate("/login")
   }
   return (
     <div className="navbar bg-base-100">

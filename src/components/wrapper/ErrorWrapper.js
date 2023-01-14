@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
-const PrivateWrapper = ({ loggedIn }) => {
+const ErrorWrapper = ({ loggedIn }) => {
   return <div className=" md:mx-10 mx-4">
     {loggedIn 
       ? <Outlet /> 
-      : <Navigate to={`/login`}
+      : <Navigate to={`/error`}
     />}
   </div>;
 };
@@ -14,4 +14,4 @@ const mapStateToProps = ({ authUser }) => ({
   loggedIn: !!authUser,
 });
 
-export default connect(mapStateToProps)(PrivateWrapper);
+export default connect(mapStateToProps)(ErrorWrapper);
