@@ -19,6 +19,7 @@ const handleLoginAuthedUser = (credential) => {
     const { users } = getState()
     const user = Object.values(users).find(user => user.id === credential.username && user.password === credential.password)
     if (!!user) {
+      console.log('user', user);
       return dispatch(loginAuthedUser(user))
     }
   }
