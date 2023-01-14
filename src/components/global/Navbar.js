@@ -1,11 +1,12 @@
 import { connect } from "react-redux"
-import { Link, Navigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { handleLogoutAuthedUser } from "../../actions/authedUser"
 
 const Navbar = ({ dispatch, authUser }) => {
+  const navigate = useNavigate()
   const logoutHandle = () => {
     dispatch(handleLogoutAuthedUser())
-    return <Navigate to="/login" />
+    navigate("/")
   }
   return (
     <div className="navbar bg-base-100">
