@@ -17,7 +17,16 @@ const Poll = ({ authUser, users, questions, dispatch }) => {
   return (
     <div>
       <h1 className=" text-center text-2xl font-extrabold">Poll by {authorName}</h1>
-      <img src={users[questions[id].author].avatarURL} alt="avatar" className="rounded-full w-20 h-20 mx-auto" />
+      {
+        users[questions[id].author].avatarURL
+          ? <img
+            src={users[questions[id].author].avatarURL}
+            alt="avatar"
+            className="rounded-full w-20 h-20 mx-auto" />
+          : <div className="rounded-full w-20 h-20 mx-auto bg-gray-400 grid place-content-center">
+            <span className="text-2xl font-extrabold text-center">{authorName[0]}</span>
+          </div>
+      }
       <div className="mt-12 flex flex-col gap-6">
         <h2 className=" text-center text-2xl font-extrabold">Would you rather</h2>
         <div className="flex justify-center gap-4">
