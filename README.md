@@ -8,6 +8,20 @@ This project lets employees create poll and vote in poll.
 - Install the dependencies: `npm install`
 - Start the server: `npm run start`
 
+## packages used
+
+for design:
+- daisyui
+- tailwind
+
+for testing:
+- jest
+- react testing library
+
+for state management:
+- react-redux
+- reduxjs/toolkit
+
 ## Data
 
 There are two types of objects stored in our database:
