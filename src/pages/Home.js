@@ -33,7 +33,6 @@ const mapStateToProps = ({ authUser, questions, users }) => {
   const unansweredPolls = Object.values(questions).filter(poll => {
     return !poll.optionOne.votes.includes(authUser.id) && !poll.optionTwo.votes.includes(authUser.id);
   }).sort((a, b) => b.timestamp - a.timestamp);
-  console.log(answeredPolls, unansweredPolls);
   return ({
     answeredPolls,
     unansweredPolls,
