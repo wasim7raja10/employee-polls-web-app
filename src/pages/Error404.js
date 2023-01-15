@@ -1,6 +1,9 @@
+import { connect } from "react-redux"
 import { Link } from "react-router-dom"
+import Login from "./Login"
 
-const Error404 = () => {
+const Error404 = ({ loggedIn }) => {
+  if (!loggedIn) return (<Login />)
   return (
     <div className=" h-screen grid place-content-center">
       <h1 className=" text-6xl text-center font-extrabold">Error 404</h1>
@@ -14,4 +17,8 @@ const Error404 = () => {
   )
 }
 
-export default Error404
+const mapStateToProps = ({ authUser }) => ({
+  loggedIn: !!authUser,
+})
+
+export default connect(mapStateToProps)(Error404);
