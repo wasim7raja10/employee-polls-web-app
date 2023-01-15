@@ -17,7 +17,8 @@ const Navbar = ({ dispatch, authUser }) => {
           <li><Link data-testid="home-link" to={"/"}>Home</Link></li>
           <li><Link data-testid="new-poll-link" to={"/add"}>New Poll</Link></li>
           <li><Link data-testid="leaderboard-link" to={"/leaderboard"}>Leaderboard</Link></li>
-          {authUser && <li><button data-testid="logout-link" onClick={logoutHandle}>Logout</button></li>}
+          {authUser ? <li><button data-testid="logout-link" onClick={logoutHandle}>Logout</button></li>
+            : <li><Link data-testid="login-link" to={"/login"}>Login</Link></li>}
         </ul>
       </div>
     </div>
