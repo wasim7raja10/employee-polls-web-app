@@ -56,7 +56,7 @@ const Poll = ({ authUser, users, questions, dispatch }) => {
             }}
             className={`btn btn-lg btn-outline flex  flex-col gap-4 ${answer === 'optionTwo' && "bg-green-400"}`}
           >
-            <span>{questions[id].optionOne.text}</span>
+            <span>{questions[id].optionTwo.text}</span>
             {authUserAnswer && <span>
               votes: {voteCount.optionTwo} {" "}
               ({((voteCount.optionTwo / (voteCount.optionOne + voteCount.optionTwo)) * 100).toFixed(2)} %)
