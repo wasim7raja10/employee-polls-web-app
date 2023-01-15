@@ -18,15 +18,13 @@ const App = ({ dispatch, loggedIn }) => {
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className=" container mx-auto">
-      {loggedIn && <Navbar />}
+      <Navbar />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route element={<PrivateWrapper />}>
           <Route path="/" element={<Home />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/add" element={<NewPoll />} />
-        </Route>
-        <Route element={<ErrorWrapper />}>
           <Route path="/questions/:id" element={<Poll />} />
         </Route>
         <Route path="*" element={<Error404 />} />
