@@ -11,6 +11,10 @@ const NewPoll = ({ dispatch }) => {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (options.firstOption === '' || options.secondOption === '') {
+      alert("Please enter both options");
+      return;
+    }
     dispatch(handleAddQuestion(options.firstOption, options.secondOption));
     navigate("/")
   }
