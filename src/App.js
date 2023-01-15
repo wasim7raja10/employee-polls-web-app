@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { receiveInitialData } from "./actions/initialData";
 import Navbar from "./components/global/Navbar";
-import ErrorWrapper from "./components/wrapper/ErrorWrapper";
 import PrivateWrapper from "./components/wrapper/PrivateWrapper";
 import Error404 from "./pages/Error404";
 import Home from "./pages/Home";
@@ -12,7 +11,7 @@ import Login from "./pages/Login";
 import NewPoll from "./pages/NewPoll";
 import Poll from "./pages/Poll";
 
-const App = ({ dispatch, loggedIn }) => {
+const App = ({ dispatch }) => {
   useEffect(() => {
     dispatch(receiveInitialData())
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -31,10 +30,6 @@ const App = ({ dispatch, loggedIn }) => {
       </Routes>
     </div>
   );
-}
+};
 
-const mapStateToProps = ({ authUser }) => ({
-  loggedIn: !!authUser,
-});
-
-export default connect(mapStateToProps)(App);
+export default connect()(App);
