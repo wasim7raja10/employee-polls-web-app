@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Login from "../../pages/Login";
 
 const PrivateWrapper = ({ loggedIn }) => {
   return <div className=" md:mx-10 mx-4">
-    {loggedIn 
-      ? <Outlet /> 
-      : <Navigate to={`/login`}
-    />}
+    {loggedIn
+      ? <Outlet />
+      : <Login />
+    }
   </div>;
 };
 
