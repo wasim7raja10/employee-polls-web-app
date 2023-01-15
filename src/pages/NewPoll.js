@@ -32,7 +32,7 @@ const NewPoll = ({ dispatch }) => {
         </div>
 
         <div className=" flex flex-col">
-          <label data-testid="secondOptionLabel" className=" text-xl py-4" htmlFor="firstOption">Second Option</label>
+          <label data-testid="secondOptionLabel" className=" text-xl py-4" htmlFor="secondOption">Second Option</label>
           <input
             value={options.secondOption}
             onChange={(e) => setOptions({ ...options, secondOption: e.target.value })}

@@ -39,7 +39,7 @@ Object {
             <label
               class=" text-xl py-4"
               data-testid="secondOptionLabel"
-              for="firstOption"
+              for="secondOption"
             >
               Second Option
             </label>
@@ -98,7 +98,7 @@ Object {
           <label
             class=" text-xl py-4"
             data-testid="secondOptionLabel"
-            for="firstOption"
+            for="secondOption"
           >
             Second Option
           </label>
